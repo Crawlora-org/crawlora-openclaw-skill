@@ -1,0 +1,28 @@
+{
+  "mcp": {
+    "servers": {
+      "crawlora": {
+        "url": "https://mcp.crawlora.net/mcp",
+        "transport": "streamable-http",
+        "headers": {
+          "Authorization": "Bearer ${CRAWLORA_API_KEY}"
+        },
+        "timeout": 60,
+        "connectTimeout": 10,
+        "toolFilter": {
+          "include": [
+            "google.*",
+            "bing.*",
+            "amazon.*",
+            "ebay.*",
+            "youtube.*",
+            "reddit.*",
+            "yahoo_finance.*",
+            "google_trends.*",
+            "google_map.*"
+          ]
+        }
+      }
+    }
+  }
+}
