@@ -55,6 +55,28 @@ export default defineToolPlugin({
       }
     }),
     tool({
+      name: "google.news",
+      description: "Search Google News and return news results.",
+      parameters: Type.Object({
+        q: Type.String({ description: "Search query." }),
+        count: Type.Optional(Type.Number({ description: "Results per page (1-50)." }))
+      }),
+      async execute(params, config) {
+        return getClient(config).request("google-news", params);
+      }
+    }),
+    tool({
+      name: "google.videos",
+      description: "Search Google Videos and return video results.",
+      parameters: Type.Object({
+        q: Type.String({ description: "Search query." }),
+        count: Type.Optional(Type.Number({ description: "Results per page (1-50)." }))
+      }),
+      async execute(params, config) {
+        return getClient(config).request("google-videos", params);
+      }
+    }),
+    tool({
       name: "bing.search",
       description: "Search Bing and return organic results.",
       parameters: Type.Object({
