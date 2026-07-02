@@ -19,7 +19,7 @@ metadata:
 
 Crawlora gives your OpenClaw agent live, structured web data without writing any
 scraping code. It is a hosted, remote [MCP](https://modelcontextprotocol.io)
-server exposing 445 tools over Streamable HTTP — search engines, marketplaces,
+server exposing 467 tools over Streamable HTTP — search engines, marketplaces,
 app stores, social platforms, finance, maps, podcasts, real estate, and more —
 each returning clean JSON.
 
@@ -69,7 +69,7 @@ fallback). The same key works for the Crawlora REST API.
 
 ## Narrowing the tool set
 
-Crawlora ships 445 tools. To keep your agent's tool list focused, use
+Crawlora ships 467 tools. To keep your agent's tool list focused, use
 `toolFilter` with `include` / `exclude` globs on the `family.*` prefixes — see
 [`examples/openclaw.json`](examples/openclaw.json) for a curated default.
 
