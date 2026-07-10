@@ -138,6 +138,90 @@ export default defineToolPlugin({
       }
     }),
     tool({
+      name: "sec.company_search",
+      description: "Resolve a ticker or company name to SEC EDGAR companies (CIK, ticker, name).",
+      parameters: Type.Object({
+        q: Type.String({ description: "Ticker symbol or company name, e.g. apple or AAPL." })
+      }),
+      async execute(params, config) {
+        return getClient(config).request("sec-company-search", params);
+      }
+    }),
+    tool({
+      name: "sec.company_intelligence",
+      description: "A company 360 from SEC data: profile, latest financial snapshot, latest 10-K/10-Q/8-K, and recent events.",
+      parameters: Type.Object({
+        ticker: Type.Optional(Type.String({ description: "Ticker symbol, e.g. AAPL." })),
+        cik: Type.Optional(Type.String({ description: "SEC CIK (alternative to ticker)." }))
+      }),
+      async execute(params, config) {
+        return getClient(config).request("sec-company-intelligence", params);
+      }
+    }),
+    tool({
+      name: "sec.financials",
+      description: "Normalized SEC financial statements (income, balance sheet, or cash flow) with computed margins and ratios.",
+      parameters: Type.Object({
+        ticker: Type.Optional(Type.String({ description: "Ticker symbol, e.g. AAPL." })),
+        cik: Type.Optional(Type.String({ description: "SEC CIK (alternative to ticker)." })),
+        statement: Type.Optional(Type.String({ description: "income, balance, or cash_flow (default income)." })),
+        period: Type.Optional(Type.String({ description: "annual or quarterly (default annual)." })),
+        limit: Type.Optional(Type.Number({ description: "Number of periods (default 5)." }))
+      }),
+      async execute(params, config) {
+        return getClient(config).request("sec-financials", params);
+      }
+    }),
+    tool({
+      name: "sec.filings",
+      description: "List a company SEC EDGAR filings, filtered by form type and date.",
+      parameters: Type.Object({
+        ticker: Type.Optional(Type.String({ description: "Ticker symbol, e.g. AAPL." })),
+        cik: Type.Optional(Type.String({ description: "SEC CIK (alternative to ticker)." })),
+        form: Type.Optional(Type.String({ description: "Form type, e.g. 10-K, 10-Q, 8-K." })),
+        limit: Type.Optional(Type.Number({ description: "Max filings (default 50)." }))
+      }),
+      async execute(params, config) {
+        return getClient(config).request("sec-company-submissions", params);
+      }
+    }),
+    tool({
+      name: "sec.filing_sections",
+      description: "Extract 10-K/10-Q/8-K item sections (Risk Factors, MD&A, etc.) from a filing as clean text.",
+      parameters: Type.Object({
+        accession: Type.String({ description: "Accession number, e.g. 0000320193-25-000079." }),
+        ticker: Type.Optional(Type.String({ description: "Ticker symbol, e.g. AAPL." })),
+        cik: Type.Optional(Type.String({ description: "SEC CIK (alternative to ticker)." })),
+        items: Type.Optional(Type.String({ description: "Comma-separated item numbers, e.g. 1A,7." }))
+      }),
+      async execute(params, config) {
+        return getClient(config).request("sec-filing-sections", params);
+      }
+    }),
+    tool({
+      name: "sec.full_text_search",
+      description: "Full-text search across SEC EDGAR filings, filtered by form and date.",
+      parameters: Type.Object({
+        q: Type.String({ description: "Search query (supports quoted phrases)." }),
+        forms: Type.Optional(Type.String({ description: "Comma-separated form types, e.g. 10-K." }))
+      }),
+      async execute(params, config) {
+        return getClient(config).request("sec-full-text-search", params);
+      }
+    }),
+    tool({
+      name: "sec.insider",
+      description: "Recent insider transactions (Forms 3/4/5) for a company.",
+      parameters: Type.Object({
+        ticker: Type.Optional(Type.String({ description: "Ticker symbol, e.g. AAPL." })),
+        cik: Type.Optional(Type.String({ description: "SEC CIK (alternative to ticker)." })),
+        limit: Type.Optional(Type.Number({ description: "Max transactions (default 10)." }))
+      }),
+      async execute(params, config) {
+        return getClient(config).request("sec-insider", params);
+      }
+    }),
+    tool({
       name: "google_trends.explore",
       description: "Explore Google Trends interest for a query.",
       parameters: Type.Object({
