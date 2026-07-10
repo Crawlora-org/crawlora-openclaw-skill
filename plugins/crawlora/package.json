@@ -22,7 +22,7 @@
     "tsc": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@crawlora-org/sdk": "^1.8.0-sdk.1",
+    "@crawlora-org/sdk": "^1.14.0-sdk.1",
     "typebox": "^0.34.0"
   },
   "devDependencies": {
