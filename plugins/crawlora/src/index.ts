@@ -222,6 +222,63 @@ export default defineToolPlugin({
       }
     }),
     tool({
+      name: "jobs.hiring_signals",
+      description: "Aggregate a company's ATS job board into hiring signals: total open roles, department/location breakdowns, remote share, and how many roles are new in the last 7/30 days.",
+      parameters: Type.Object({
+        provider: Type.String({ description: "ATS provider: greenhouse, lever, ashby, workday, or smartrecruiters." }),
+        token: Type.Optional(Type.String({ description: "Greenhouse board token." })),
+        company: Type.Optional(Type.String({ description: "Lever or SmartRecruiters company slug." })),
+        org: Type.Optional(Type.String({ description: "Ashby org slug." })),
+        tenant: Type.Optional(Type.String({ description: "Workday tenant." })),
+        datacenter: Type.Optional(Type.String({ description: "Workday datacenter shard (wd1, wd3, wd5...)." })),
+        site: Type.Optional(Type.String({ description: "Workday career site." }))
+      }),
+      async execute(params, config) {
+        return getClient(config).request("jobs-hiring-signals", params);
+      }
+    }),
+    tool({
+      name: "jobs.company_search",
+      description: "Find which ATS (Greenhouse, Lever, Ashby, SmartRecruiters) a company uses from its careers slug, with open-role counts.",
+      parameters: Type.Object({
+        slug: Type.String({ description: "Company careers slug, e.g. stripe." })
+      }),
+      async execute(params, config) {
+        return getClient(config).request("jobs-company-search", params);
+      }
+    }),
+    tool({
+      name: "jobs.greenhouse_board",
+      description: "List a company's public Greenhouse job board postings, normalized to a shared Job shape.",
+      parameters: Type.Object({
+        token: Type.String({ description: "Greenhouse board token (careers URL slug), e.g. stripe." }),
+        content: Type.Optional(Type.Boolean({ description: "Include full HTML description per job." }))
+      }),
+      async execute(params, config) {
+        return getClient(config).request("jobs-greenhouse-board", params);
+      }
+    }),
+    tool({
+      name: "jobs.lever_postings",
+      description: "List a company's public Lever job postings, normalized.",
+      parameters: Type.Object({
+        company: Type.String({ description: "Lever company slug, e.g. spotify." })
+      }),
+      async execute(params, config) {
+        return getClient(config).request("jobs-lever-postings", params);
+      }
+    }),
+    tool({
+      name: "jobs.ashby_board",
+      description: "List an organization's public Ashby job board postings, normalized.",
+      parameters: Type.Object({
+        org: Type.String({ description: "Ashby org slug, e.g. openai." })
+      }),
+      async execute(params, config) {
+        return getClient(config).request("jobs-ashby-board", params);
+      }
+    }),
+    tool({
       name: "google_trends.explore",
       description: "Explore Google Trends interest for a query.",
       parameters: Type.Object({
