@@ -5,7 +5,7 @@ backed by the official [`@crawlora-org/sdk`](https://www.npmjs.com/package/@craw
 Calls go through the maintained client (retries, typed errors, pagination)
 instead of raw MCP.
 
-> Want **all ~440** Crawlora tools with zero code? Use the hosted MCP skill
+> Want **all 683** Crawlora tools with zero code? Use the hosted MCP skill
 > instead — see the [repo README](../../README.md) and [`SKILL.md`](../../SKILL.md).
 
 ## Install

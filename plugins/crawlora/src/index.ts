@@ -8,7 +8,7 @@ import { CrawloraClient } from "@crawlora-org/sdk";
  * This is a thin, curated adapter over the official `@crawlora-org/sdk`. It
  * exposes a focused set of high-value tools so calls go through the maintained
  * client (retries, typed errors, pagination) instead of raw MCP. For full
- * coverage of all ~150 endpoints, use the hosted MCP skill instead (see the
+ * coverage of all 683 tools, use the hosted MCP skill instead (see the
  * repo README / SKILL.md).
  *
  * Tool names mirror the MCP `family.action` convention for consistency.
@@ -51,7 +51,14 @@ export default defineToolPlugin({
         num: Type.Optional(Type.Number({ description: "Number of results." }))
       }),
       async execute(params, config) {
-        return getClient(config).request("google-search", params);
+        return getClient(config).request("google-search", {
+          searchOption: {
+            keyword: params.q,
+            country: "us",
+            language: "en",
+            ...(params.num === undefined ? {} : { limit: params.num })
+          }
+        });
       }
     }),
     tool({
@@ -114,7 +121,7 @@ export default defineToolPlugin({
         q: Type.String({ description: "Search query." })
       }),
       async execute(params, config) {
-        return getClient(config).request("ebay-search", params);
+        return getClient(config).request("ebay-search", { option: { keyword: params.q } });
       }
     }),
     tool({
@@ -134,7 +141,7 @@ export default defineToolPlugin({
         ticker: Type.String({ description: "Ticker symbol, e.g. NVDA." })
       }),
       async execute(params, config) {
-        return getClient(config).request("yahoo-finance-ticker-quote", params);
+        return getClient(config).request("yahoo-finance-ticker-quote", { symbol: params.ticker });
       }
     }),
     tool({
@@ -164,8 +171,15 @@ export default defineToolPlugin({
       parameters: Type.Object({
         ticker: Type.Optional(Type.String({ description: "Ticker symbol, e.g. AAPL." })),
         cik: Type.Optional(Type.String({ description: "SEC CIK (alternative to ticker)." })),
-        statement: Type.Optional(Type.String({ description: "income, balance, or cash_flow (default income)." })),
-        period: Type.Optional(Type.String({ description: "annual or quarterly (default annual)." })),
+        statement: Type.Optional(Type.Union([
+          Type.Literal("income"),
+          Type.Literal("balance"),
+          Type.Literal("cash_flow")
+        ], { description: "Financial statement (default income)." })),
+        period: Type.Optional(Type.Union([
+          Type.Literal("annual"),
+          Type.Literal("quarterly")
+        ], { description: "Reporting period (default annual)." })),
         limit: Type.Optional(Type.Number({ description: "Number of periods (default 5)." }))
       }),
       async execute(params, config) {
@@ -225,7 +239,13 @@ export default defineToolPlugin({
       name: "jobs.hiring_signals",
       description: "Aggregate a company's ATS job board into hiring signals: total open roles, department/location breakdowns, remote share, and how many roles are new in the last 7/30 days.",
       parameters: Type.Object({
-        provider: Type.String({ description: "ATS provider: greenhouse, lever, ashby, workday, or smartrecruiters." }),
+        provider: Type.Union([
+          Type.Literal("greenhouse"),
+          Type.Literal("lever"),
+          Type.Literal("ashby"),
+          Type.Literal("workday"),
+          Type.Literal("smartrecruiters")
+        ], { description: "ATS provider." }),
         token: Type.Optional(Type.String({ description: "Greenhouse board token." })),
         company: Type.Optional(Type.String({ description: "Lever or SmartRecruiters company slug." })),
         org: Type.Optional(Type.String({ description: "Ashby org slug." })),
@@ -285,7 +305,7 @@ export default defineToolPlugin({
         q: Type.String({ description: "Query or topic to explore." })
       }),
       async execute(params, config) {
-        return getClient(config).request("google-trends-explore", params);
+        return getClient(config).request("google-trends-explore", { request: { keywords: [params.q] } });
       }
     }),
     tool({
@@ -295,7 +315,7 @@ export default defineToolPlugin({
         q: Type.String({ description: "Place or business search query." })
       }),
       async execute(params, config) {
-        return getClient(config).request("google-map-search", params);
+        return getClient(config).request("google-map-search", { mapSearchOption: { keyword: params.q } });
       }
     })
   ]
