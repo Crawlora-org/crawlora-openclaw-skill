@@ -35,7 +35,7 @@ Or set it in `~/.openclaw/openclaw.json` plugin config:
 }
 ```
 
-Create an API key in the dashboard at [crawlora.net](https://crawlora.net).
+Create an API key in the dashboard at [crawlora.net](https://crawlora.net?utm_source=github&utm_medium=referral&utm_campaign=crawlora-openclaw-skill).
 
 ## Tools
 
