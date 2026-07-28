@@ -10,7 +10,7 @@ metadata:
     envVars:
       - name: CRAWLORA_API_KEY
         required: true
-        description: Your Crawlora API key. Create one in the dashboard at https://crawlora.net.
+        description: Your Crawlora API key. Create one in the dashboard at https://crawlora.net?utm_source=github&utm_medium=referral&utm_campaign=crawlora-openclaw-skill.
     emoji: "🦞"
     homepage: https://github.com/Crawlora-org/crawlora-openclaw-skill
 ---
@@ -29,7 +29,7 @@ Tools follow a stable `family.action` naming convention, for example
 
 ## Setup
 
-1. Create a Crawlora API key in the dashboard at <https://crawlora.net>.
+1. Create a Crawlora API key in the dashboard at [https://crawlora.net](https://crawlora.net?utm_source=github&utm_medium=referral&utm_campaign=crawlora-openclaw-skill).
 2. Export it so OpenClaw can read it:
 
    ```sh

@@ -2,7 +2,7 @@
 
 Give your [OpenClaw](https://github.com/openclaw/openclaw) agent live, structured
 web data — search engines, marketplaces, app stores, social, finance, maps,
-podcasts, real estate, and more — through [Crawlora](https://crawlora.net).
+podcasts, real estate, and more — through [Crawlora](https://crawlora.net?utm_source=github&utm_medium=referral&utm_campaign=crawlora-openclaw-skill).
 
 There are two ways to use Crawlora from OpenClaw:
 
@@ -12,7 +12,7 @@ There are two ways to use Crawlora from OpenClaw:
 | **Native plugin** | An in-process OpenClaw tool plugin wrapping [`@crawlora-org/sdk`](https://www.npmjs.com/package/@crawlora-org/sdk). | A focused, typed, curated tool surface. |
 
 Both authenticate with the same Crawlora API key. Create one in the dashboard at
-[crawlora.net](https://crawlora.net).
+[crawlora.net](https://crawlora.net?utm_source=github&utm_medium=referral&utm_campaign=crawlora-openclaw-skill).
 
 ---
 
@@ -143,7 +143,7 @@ pre/post-processing. You can run either or both.
 
 ## Links
 
-- Crawlora dashboard & API keys: <https://crawlora.net>
+- Crawlora dashboard & API keys: [https://crawlora.net](https://crawlora.net?utm_source=github&utm_medium=referral&utm_campaign=crawlora-openclaw-skill)
 - Hosted MCP endpoint: `https://mcp.crawlora.net/mcp`
 - TypeScript SDK: <https://www.npmjs.com/package/@crawlora-org/sdk>
 - OpenClaw: <https://github.com/openclaw/openclaw>
