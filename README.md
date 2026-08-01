@@ -8,7 +8,7 @@ There are two ways to use Crawlora from OpenClaw:
 
 | Approach | What it is | Best for |
 | --- | --- | --- |
-| **MCP skill** (recommended) | Connect OpenClaw to Crawlora's hosted MCP server. 733 tools, zero code. | Full coverage, fastest setup. |
+| **MCP skill** (recommended) | Connect OpenClaw to Crawlora's hosted MCP server. 828 tools, zero code. | Full coverage, fastest setup. |
 | **Native plugin** | An in-process OpenClaw tool plugin wrapping [`@crawlora-org/sdk`](https://www.npmjs.com/package/@crawlora-org/sdk). | A focused, typed, curated tool surface. |
 
 Both authenticate with the same Crawlora API key. Create one in the dashboard at
@@ -81,7 +81,7 @@ Tools use stable `family.action` names, e.g. `google.search`, `amazon.product`,
 `yahoo_finance.ticker_quote`, `youtube.transcript`, `reddit.subreddit_posts`,
 `google_trends.explore`, `google_map.search`.
 
-Crawlora exposes 733 tools. To keep your agent's tool list lean, narrow it with
+Crawlora exposes 828 tools. To keep your agent's tool list lean, narrow it with
 `toolFilter`:
 
 ```json
