@@ -8,7 +8,7 @@ import { CrawloraClient } from "@crawlora-org/sdk";
  * This is a thin, curated adapter over the official `@crawlora-org/sdk`. It
  * exposes a focused set of high-value tools so calls go through the maintained
  * client (retries, typed errors, pagination) instead of raw MCP. For full
- * coverage of all 683 tools, use the hosted MCP skill instead (see the
+ * coverage of all 1873 tools, use the hosted MCP skill instead (see the
  * repo README / SKILL.md).
  *
  * Tool names mirror the MCP `family.action` convention for consistency.

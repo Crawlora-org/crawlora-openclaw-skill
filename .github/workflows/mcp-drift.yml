@@ -1,0 +1,23 @@
+name: MCP documentation drift
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "31 */6 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify MCP tool counts in all public OpenClaw docs
+        run: node scripts/verify-mcp-docs.mjs
