@@ -110,26 +110,20 @@ one-click discovery and install.
 
 ## Option B — Native plugin
 
-A native OpenClaw tool plugin lives under [`plugins/crawlora/`](plugins/crawlora/).
-It registers a curated set of typed tools backed by the official
-[`@crawlora-org/sdk`](https://www.npmjs.com/package/@crawlora-org/sdk), so calls
-go through the maintained client (retries, typed errors, pagination) rather than
-raw MCP.
+The maintained native plugin now lives in the dedicated
+[`Crawlora-org/crawlora-openclaw-plugin`](https://github.com/Crawlora-org/crawlora-openclaw-plugin)
+repository. It exposes 23 curated tools through the published Crawlora SDK,
+with tested request mappings, cancellation, and API-key configuration.
 
-```sh
-cd plugins/crawlora
-npm install
-npm run build
-openclaw plugins install .
-export CRAWLORA_API_KEY=sk_your_key_here
-```
+See the [plugin installation and configuration guide](https://github.com/Crawlora-org/crawlora-openclaw-plugin#install)
+for the ClawHub command, supported OpenClaw version, and tool list.
 
-See [`plugins/crawlora/README.md`](plugins/crawlora/README.md) for the tool list
-and configuration.
+The `plugins/crawlora/` directory here is the historical scaffold; use the
+standalone repository for builds, releases, and new tool development. This
+repository continues to maintain the skill and hosted MCP integration.
 
-**When to use which:** the MCP skill gives full coverage with zero code; the
-plugin gives a smaller, opinionated tool surface and a place to add custom
-pre/post-processing. You can run either or both.
+**When to use which:** the hosted MCP integration gives the full tool catalog;
+the native plugin gives a smaller curated surface. You can run either or both.
 
 ---
 
