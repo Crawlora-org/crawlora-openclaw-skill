@@ -5,3 +5,5 @@ The maintained native plugin has moved to
 Use that repository's installation guide, source, tests, and release process.
 The source in this directory is retained for history and is not the current
 published package.
+
+The hosted MCP currently exposes 3,093 tools across 420 platform groups.
