@@ -8,7 +8,7 @@ import { CrawloraClient } from "@crawlora-org/sdk";
  * This is a thin, curated adapter over the official `@crawlora-org/sdk`. It
  * exposes a focused set of high-value tools so calls go through the maintained
  * client (retries, typed errors, pagination) instead of raw MCP. For full
- * coverage of all 1873 tools, use the hosted MCP skill instead (see the
+ * coverage of all 3093 tools, use the hosted MCP skill instead (see the
  * repo README / SKILL.md).
  *
  * Tool names mirror the MCP `family.action` convention for consistency.
@@ -43,24 +43,6 @@ export default defineToolPlugin({
     )
   }),
   tools: (tool) => [
-    tool({
-      name: "google.search",
-      description: "Search Google and return organic results.",
-      parameters: Type.Object({
-        q: Type.String({ description: "Search query." }),
-        num: Type.Optional(Type.Number({ description: "Number of results." }))
-      }),
-      async execute(params, config) {
-        return getClient(config).request("google-search", {
-          searchOption: {
-            keyword: params.q,
-            country: "us",
-            language: "en",
-            ...(params.num === undefined ? {} : { limit: params.num })
-          }
-        });
-      }
-    }),
     tool({
       name: "google.news",
       description: "Search Google News and return news results.",
