@@ -6,4 +6,4 @@ Use that repository's installation guide, source, tests, and release process.
 The source in this directory is retained for history and is not the current
 published package.
 
-The hosted MCP currently exposes 3209 tools across 438 platform groups.
+The hosted MCP currently exposes 3475 tools across 468 platform groups.
