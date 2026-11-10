@@ -6,4 +6,4 @@ Use that repository's installation guide, source, tests, and release process.
 The source in this directory is retained for history and is not the current
 published package.
 
-The hosted MCP currently exposes 4646 tools across 530 platform groups.
+The `crawlora-mcp` package catalog contains 4684 tools across 534 platform groups; the hosted endpoint is `https://mcp.crawlora.net/mcp`.
